@@ -7,15 +7,17 @@
 //
 
 #import "RootViewController.h"
-
+#import "States.h"
 
 @implementation RootViewController
 
 @synthesize states;
 
-#pragma mark Memory clean up methods
+#pragma mark -
+#pragma mark destructors and memory cleanUp
+// use cleanUp method to avoid repeating code in dealloc, setView, and viewDidUnload
 -(void)cleanUp {
-    [states release], states=nil;
+    [states release], states = nil;
 }
 
 - (void)dealloc {
@@ -23,25 +25,43 @@
     [super dealloc];
 }
 
+// Release IBOutlets in setView.  
+// Ref http://developer.apple.com/iPhone/library/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmNibObjects.html
+//
+// http://moodle.extn.washington.edu/mod/forum/discuss.php?d=3162
+- (void)setView:(UIView *)aView {
+    
+    if (!aView) { // view is being set to nil        
+        // set outlets to nil, e.g. 
+        // self.anOutlet = nil;
+        [self cleanUp];
+    }    
+    // Invoke super's implementation last    
+    [super setView:aView];    
+}
+
+
 - (void)viewDidUnload {
 	// Release anything that can be recreated in viewDidLoad or on demand.
 	// e.g. self.myOutlet = nil;
     [self cleanUp];
 }
 
-// TODO: Implement setView, call cleanUp
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
 
 
 #pragma mark -
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.states = [[States alloc] init];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    // ????: is path autoreleased?  need to retain?
-    NSString *path=[[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"]; 
-    states = [[NSDictionary alloc] initWithContentsOfFile:path];
 
 }
 
@@ -75,14 +95,6 @@
 }
  */
 
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-
 
 #pragma mark Table view methods
 
@@ -93,10 +105,8 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return 0;
-    // [states count] = 19, note the last one is not a state
-    NSLog(@"states count = %d", [states count]);
-    return [states count];
+    // return 0;
+    return [self.states.statesArray count];
 }
 
 

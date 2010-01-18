@@ -6,10 +6,12 @@
 //  Copyright Beepscore LLC 2010. All rights reserved.
 //
 
+@class States;
+
 @interface RootViewController : UITableViewController {
-    // ????: Make a separate model class and load plist into it?
-    NSDictionary *states;
+    States *states;
 }
 
-@property (nonatomic, copy) NSDictionary *states;
+@property (nonatomic, retain) States *states;
+
 @end

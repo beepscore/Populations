@@ -18,6 +18,8 @@
 		DE19042411044F1100F7C938 /* CountiesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE19042311044F1100F7C938 /* CountiesTableViewController.m */; };
 		DE19042911044F2D00F7C938 /* CountyDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE19042811044F2D00F7C938 /* CountyDataTableViewController.m */; };
 		DE23DAC21103D4AB0098D5D2 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE23DAC11103D4AB0098D5D2 /* data.plist */; };
+		DE5529CD1104F4C900FB9109 /* State.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5529CC1104F4C900FB9109 /* State.m */; };
+		DE8683CC1104F77D00DA948B /* States.m in Sources */ = {isa = PBXBuildFile; fileRef = DE8683CB1104F77D00DA948B /* States.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,10 @@
 		DE19042711044F2D00F7C938 /* CountyDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountyDataTableViewController.h; sourceTree = "<group>"; };
 		DE19042811044F2D00F7C938 /* CountyDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountyDataTableViewController.m; sourceTree = "<group>"; };
 		DE23DAC11103D4AB0098D5D2 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		DE5529CB1104F4C900FB9109 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
+		DE5529CC1104F4C900FB9109 /* State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = State.m; sourceTree = "<group>"; };
+		DE8683CA1104F77D00DA948B /* States.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = States.h; sourceTree = "<group>"; };
+		DE8683CB1104F77D00DA948B /* States.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = States.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,10 @@
 				DE19042311044F1100F7C938 /* CountiesTableViewController.m */,
 				DE19042711044F2D00F7C938 /* CountyDataTableViewController.h */,
 				DE19042811044F2D00F7C938 /* CountyDataTableViewController.m */,
+				DE5529CB1104F4C900FB9109 /* State.h */,
+				DE5529CC1104F4C900FB9109 /* State.m */,
+				DE8683CA1104F77D00DA948B /* States.h */,
+				DE8683CB1104F77D00DA948B /* States.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -187,6 +197,8 @@
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
 				DE19042411044F1100F7C938 /* CountiesTableViewController.m in Sources */,
 				DE19042911044F2D00F7C938 /* CountyDataTableViewController.m in Sources */,
+				DE5529CD1104F4C900FB9109 /* State.m in Sources */,
+				DE8683CC1104F77D00DA948B /* States.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
