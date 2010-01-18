@@ -7,6 +7,9 @@
 //
 
 @interface RootViewController : UITableViewController {
+    // ????: Make a separate model class and load plist into it?
+    NSDictionary *states;
 }
 
+@property (nonatomic, copy) NSDictionary *states;
 @end

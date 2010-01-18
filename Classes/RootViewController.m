@@ -11,14 +11,40 @@
 
 @implementation RootViewController
 
-/*
+@synthesize states;
+
+#pragma mark Memory clean up methods
+-(void)cleanUp {
+    [states release], states=nil;
+}
+
+- (void)dealloc {
+    [self cleanUp];
+    [super dealloc];
+}
+
+- (void)viewDidUnload {
+	// Release anything that can be recreated in viewDidLoad or on demand.
+	// e.g. self.myOutlet = nil;
+    [self cleanUp];
+}
+
+// TODO: Implement setView, call cleanUp
+
+
+#pragma mark -
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // ????: is path autoreleased?  need to retain?
+    NSString *path=[[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"]; 
+    states = [[NSDictionary alloc] initWithContentsOfFile:path];
+
 }
-*/
+
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,10 +82,6 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload {
-	// Release anything that can be recreated in viewDidLoad or on demand.
-	// e.g. self.myOutlet = nil;
-}
 
 
 #pragma mark Table view methods
@@ -71,7 +93,10 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+//    return 0;
+    // [states count] = 19, note the last one is not a state
+    NSLog(@"states count = %d", [states count]);
+    return [states count];
 }
 
 
@@ -89,7 +114,6 @@
 
     return cell;
 }
-
 
 
 /*
@@ -142,11 +166,6 @@
     return YES;
 }
 */
-
-
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end
