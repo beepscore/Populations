@@ -15,6 +15,8 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
+		DE19042411044F1100F7C938 /* CountiesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE19042311044F1100F7C938 /* CountiesTableViewController.m */; };
+		DE19042911044F2D00F7C938 /* CountyDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE19042811044F2D00F7C938 /* CountyDataTableViewController.m */; };
 		DE23DAC21103D4AB0098D5D2 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE23DAC11103D4AB0098D5D2 /* data.plist */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,10 @@
 		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Populations-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Populations-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DE19042211044F1100F7C938 /* CountiesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountiesTableViewController.h; sourceTree = "<group>"; };
+		DE19042311044F1100F7C938 /* CountiesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountiesTableViewController.m; sourceTree = "<group>"; };
+		DE19042711044F2D00F7C938 /* CountyDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountyDataTableViewController.h; sourceTree = "<group>"; };
+		DE19042811044F2D00F7C938 /* CountyDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountyDataTableViewController.m; sourceTree = "<group>"; };
 		DE23DAC11103D4AB0098D5D2 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +62,10 @@
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* PopulationsAppDelegate.h */,
 				1D3623250D0F684500981E51 /* PopulationsAppDelegate.m */,
+				DE19042211044F1100F7C938 /* CountiesTableViewController.h */,
+				DE19042311044F1100F7C938 /* CountiesTableViewController.m */,
+				DE19042711044F2D00F7C938 /* CountyDataTableViewController.h */,
+				DE19042811044F2D00F7C938 /* CountyDataTableViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -175,6 +185,8 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* PopulationsAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
+				DE19042411044F1100F7C938 /* CountiesTableViewController.m in Sources */,
+				DE19042911044F2D00F7C938 /* CountyDataTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
