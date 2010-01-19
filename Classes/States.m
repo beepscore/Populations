@@ -31,7 +31,7 @@
     }
     [tempDict release];        
     
-    // Sort statesArray alphabetically
+    // Sort resultsArray alphabetically
     [resultsArray sortUsingSelector:@selector(compare:)];
     
     // TODO: Get only the top level values, not the whole dictionary        

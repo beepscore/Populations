@@ -11,14 +11,12 @@
 
 @implementation RootViewController
 
-@synthesize states;
 @synthesize statesArray;
 
 #pragma mark -
 #pragma mark destructors and memory cleanUp
 // use cleanUp method to avoid repeating code in dealloc, setView, and viewDidUnload
 -(void)cleanUp {
-    [states release], states = nil;
     [statesArray release], statesArray = nil;
 }
 
@@ -60,9 +58,10 @@
 #pragma mark -
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.states = [[States alloc] init];
-    self.statesArray = [self.states statesArray];
-
+    States *tempStates = [[States alloc] init];
+    self.statesArray = [tempStates statesArray];
+    [tempStates release];
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
@@ -179,7 +178,6 @@
     return YES;
 }
 */
-
 
 @end
 
