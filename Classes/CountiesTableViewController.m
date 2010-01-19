@@ -8,6 +8,7 @@
 
 #import "CountiesTableViewController.h"
 #import "States.h"
+#import "CountyDataTableViewController.h"
 
 
 @implementation CountiesTableViewController
@@ -26,7 +27,7 @@
     self = [super init];
     if (self) {        
         States *tempStates = [[States alloc] init];
-        self.countiesArray = [tempStates countiesArray:aStateName];
+        self.countiesArray = [tempStates countiesArrayForState:aStateName];
         [tempStates release];
     }
     return self;    
@@ -112,5 +113,18 @@
     
     return cell;
 }
+
+
+// Override to support row selection in the table view.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Navigation logic may go here -- for example, create and push another view controller.
+    CountyDataTableViewController *countyDataTableViewController = [[CountyDataTableViewController alloc] initWithCountyName:[self.countiesArray objectAtIndex:indexPath.row]];
+    
+	[self.navigationController pushViewController:countyDataTableViewController animated:YES];
+	[countyDataTableViewController release];
+    
+}
+
 
 @end
