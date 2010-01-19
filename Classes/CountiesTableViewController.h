@@ -10,7 +10,11 @@
 
 
 @interface CountiesTableViewController : UITableViewController {
-
+    NSArray *countiesArray;
 }
+@property (nonatomic, copy) NSArray *countiesArray;
+
+// designated initializer
+- (id)initWithStateName:(NSString *)aStateName;
 
 @end

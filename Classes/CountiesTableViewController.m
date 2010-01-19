@@ -7,56 +7,65 @@
 //
 
 #import "CountiesTableViewController.h"
+#import "States.h"
 
 
 @implementation CountiesTableViewController
 
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    if (self = [super initWithStyle:style]) {
+@synthesize countiesArray;
+
+
+#pragma mark initializers
+- (id)init {
+    return [self initWithStateName:@"Alaska"];
+}
+
+
+// designated initializer
+- (id)initWithStateName:(NSString *)aStateName {
+    self = [super init];
+    if (self) {        
+        States *tempStates = [[States alloc] init];
+        self.countiesArray = [tempStates countiesArray:aStateName];
+        [tempStates release];
     }
-    return self;
+    return self;    
 }
-*/
 
-/*
-- (void)viewDidLoad {
-    [super viewDidLoad];
 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+#pragma mark -
+#pragma mark destructors and memory cleanUp
+// use cleanUp method to avoid repeating code in dealloc, setView, and viewDidUnload
+-(void)cleanUp {
+    [countiesArray release], countiesArray = nil;
 }
-*/
 
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)dealloc {
+    [self cleanUp];
+    [super dealloc];
 }
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+// Release IBOutlets in setView.  
+// Ref http://developer.apple.com/iPhone/library/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmNibObjects.html
+//
+// http://moodle.extn.washington.edu/mod/forum/discuss.php?d=3162
+- (void)setView:(UIView *)aView {
+    
+    if (!aView) { // view is being set to nil        
+        // set outlets to nil, e.g. 
+        // self.anOutlet = nil;
+        [self cleanUp];
+    }    
+    // Invoke super's implementation last    
+    [super setView:aView];    
 }
-*/
+
+
+- (void)viewDidUnload {
+	// Release anything that can be recreated in viewDidLoad or on demand.
+	// e.g. self.myOutlet = nil;
+    [self cleanUp];
+}
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -65,9 +74,13 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+
+#pragma mark -
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
@@ -80,7 +93,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [self.countiesArray count];
 }
 
 
@@ -94,64 +107,10 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Set up the cell...
-	
+	// Configure the cell.
+	cell.textLabel.text = [self.countiesArray objectAtIndex:indexPath.row];
+    
     return cell;
 }
 
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
-}
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
-- (void)dealloc {
-    [super dealloc];
-}
-
-
 @end
-

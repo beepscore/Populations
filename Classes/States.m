@@ -15,36 +15,58 @@
     [super dealloc];
 }
 
+- (NSDictionary *)statesDictionary {
+    // path is autoreleased  Don't retain it.
+    NSString *path=[[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
+    
+    NSDictionary *resultsDictionary = [[NSDictionary alloc] initWithContentsOfFile:path];
+    [resultsDictionary autorelease];
+    return resultsDictionary;
+}
+
+
 
 - (NSArray *)statesArray {
     
     NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
 
-    // path is autoreleased  Don't retain it.
-    NSString *path=[[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
-    
-    NSDictionary *tempDict;
-    tempDict = [[NSDictionary alloc] initWithContentsOfFile:path];
-    
-    for(NSString *aState in tempDict) {
+    for(NSString *aState in [self statesDictionary]) {
         [resultsArray addObject:aState];
-    }
-    [tempDict release];        
+    }        
     
     // Sort resultsArray alphabetically
     [resultsArray sortUsingSelector:@selector(compare:)];
     
-    // TODO: Get only the top level values, not the whole dictionary        
-    // [tempDict objectForKey:@"Alabama"];
-    // ????: can do plist objectForKey:@"Alabama"  ???????
-    // [tempDict valueForKey:aKey];
-    
+    // TODO: Get only the top level values, not the whole dictionary            
     // [resultsArray count] = 18
     NSLog(@"resultsArray count = %d", [resultsArray count]);
     NSLog(@"resultsArray = %@", resultsArray);
     [resultsArray autorelease];
     return resultsArray;
 }
+
+// TODO: return counties instead of states.  Use aStateKey
+- (NSArray *)countiesArray:(NSString*)aStateKey {
+    
+    NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
+    
+    for(NSString *aState in [self statesDictionary]) {
+        [resultsArray addObject:aState];
+    }        
+    
+    // Sort resultsArray alphabetically
+    [resultsArray sortUsingSelector:@selector(compare:)];
+    
+    // [tempDict objectForKey:@"Alabama"];
+    // ????: can do plist objectForKey:@"Alabama"  ???????
+    // [tempDict valueForKey:aKey];
+    
+    NSLog(@"resultsArray count = %d", [resultsArray count]);
+    NSLog(@"resultsArray = %@", resultsArray);
+    [resultsArray autorelease];
+    return resultsArray;
+}
+
 
 
 @end

@@ -13,5 +13,6 @@
 
 }
 - (NSArray *)statesArray;
+- (NSArray *)countiesArray:(NSString*)aStateKey;
 
 @end
