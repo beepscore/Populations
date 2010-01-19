@@ -12,12 +12,14 @@
 @implementation RootViewController
 
 @synthesize states;
+@synthesize statesArray;
 
 #pragma mark -
 #pragma mark destructors and memory cleanUp
 // use cleanUp method to avoid repeating code in dealloc, setView, and viewDidUnload
 -(void)cleanUp {
     [states release], states = nil;
+    [statesArray release], statesArray = nil;
 }
 
 - (void)dealloc {
@@ -59,6 +61,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.states = [[States alloc] init];
+    self.statesArray = [self.states statesArray];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -105,7 +108,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.states.statesArray count];
+    return [self.statesArray count];
 }
 
 
@@ -120,7 +123,7 @@
     }
     
 	// Configure the cell.
-	cell.textLabel.text = [self.states.statesArray objectAtIndex:indexPath.row];
+	cell.textLabel.text = [self.statesArray objectAtIndex:indexPath.row];
 
     return cell;
 }

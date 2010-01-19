@@ -10,8 +10,10 @@
 
 @interface RootViewController : UITableViewController {
     States *states;
+    NSArray *statesArray;
 }
 
 @property (nonatomic, retain) States *states;
+@property (nonatomic, copy) NSArray *statesArray;
 
 @end

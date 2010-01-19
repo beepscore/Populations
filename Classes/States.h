@@ -10,9 +10,8 @@
 
 
 @interface States : NSObject {
-    NSMutableArray *statesArray;
 
 }
-@property (nonatomic, copy) NSMutableArray *statesArray;
+- (NSArray *)statesArray;
 
 @end
