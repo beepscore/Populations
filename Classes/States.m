@@ -23,7 +23,7 @@
         NSDictionary *tempDict;
         tempDict = [[NSDictionary alloc] initWithContentsOfFile:path];
         
-        for(NSString *aState in tempDict){
+        for(NSString *aState in tempDict) {
             [self.statesArray addObject:aState];
         }
         [tempDict release];        

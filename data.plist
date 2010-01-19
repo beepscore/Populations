@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>Alabama</key>
@@ -16636,7 +16636,7 @@
 			<key>Numeric Change in resident total population 4/1/2000 to 7/1/2000</key>
 			<string>74</string>
 		</dict>
-		<key>O'Brien County</key>
+		<key>O&apos;Brien County</key>
 		<dict>
 			<key>4/1/2000 resident total population estimates base</key>
 			<string>15102</string>
@@ -21372,28 +21372,6 @@
 			<string>0</string>
 			<key>Numeric Change in resident total population 4/1/2000 to 7/1/2000</key>
 			<string>-36</string>
-		</dict>
-	</dict>
-	<key>STNAME</key>
-	<dict>
-		<key>CTYNAME</key>
-		<dict>
-			<key>4/1/2000 resident total population estimates base</key>
-			<string>ESTIMATESBASE2000</string>
-			<key>7/1/2000 resident total population estimate</key>
-			<string>POPESTIMATE2000</string>
-			<key>Births in period 4/1/2000 to 7/1/2000</key>
-			<string>BIRTHS2000</string>
-			<key>Deaths in period 4/1/2000 to 7/1/2000</key>
-			<string>DEATHS2000</string>
-			<key>Natural increase in period 4/1/2000 to 7/1/2000</key>
-			<string>NATURALINC2000</string>
-			<key>Net domestic migration in period 4/1/2000 to 7/1/2000</key>
-			<string>DOMESTICMIG2000</string>
-			<key>Net international migration in period 4/1/2000 to 7/1/2000</key>
-			<string>INTERNATIONALMIG2000</string>
-			<key>Numeric Change in resident total population 4/1/2000 to 7/1/2000</key>
-			<string>NPOPCHG_2000</string>
 		</dict>
 	</dict>
 </dict>

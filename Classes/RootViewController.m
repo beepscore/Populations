@@ -105,7 +105,6 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // return 0;
     return [self.states.statesArray count];
 }
 
@@ -121,13 +120,14 @@
     }
     
 	// Configure the cell.
+	cell.textLabel.text = [self.states.statesArray objectAtIndex:indexPath.row];
 
     return cell;
 }
 
 
 /*
-// Override to support row selection in the table view.
+ // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     // Navigation logic may go here -- for example, create and push another view controller.
