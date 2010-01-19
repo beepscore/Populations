@@ -133,18 +133,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Navigation logic may go here -- for example, create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController animated:YES];
-	// [anotherViewController release];
-    
+    // TODO:  Use selected state instead of @"Alaska"
     CountiesTableViewController *countiesTableViewController = [[CountiesTableViewController alloc]
-                                                                initWithStateName:@"aState"];
+                                                                initWithStateName:@"Alaska"];
     
 	[self.navigationController pushViewController:countiesTableViewController animated:YES];
 	[countiesTableViewController release];
 
 }
-
 
 
 /*

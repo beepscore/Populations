@@ -45,24 +45,26 @@
     return resultsArray;
 }
 
-// TODO: return counties instead of states.  Use aStateKey
+
 - (NSArray *)countiesArray:(NSString*)aStateKey {
     
     NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
     
-    for(NSString *aState in [self statesDictionary]) {
-        [resultsArray addObject:aState];
+    NSDictionary *countiesDictionary = [[self statesDictionary] objectForKey:aStateKey];
+    
+    for(NSString *aCounty in countiesDictionary) {
+        [resultsArray addObject:aCounty];
     }        
-    
-    // Sort resultsArray alphabetically
-    [resultsArray sortUsingSelector:@selector(compare:)];
-    
-    // [tempDict objectForKey:@"Alabama"];
+
     // ????: can do plist objectForKey:@"Alabama"  ???????
     // [tempDict valueForKey:aKey];
+
     
-    NSLog(@"resultsArray count = %d", [resultsArray count]);
-    NSLog(@"resultsArray = %@", resultsArray);
+    // Sort resultsArray alphabetically
+    [resultsArray sortUsingSelector:@selector(compare:)];    
+    
+    NSLog(@"countiesArray count = %d", [resultsArray count]);
+    NSLog(@"countiesArray = %@", resultsArray);
     [resultsArray autorelease];
     return resultsArray;
 }
