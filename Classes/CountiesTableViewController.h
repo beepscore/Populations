@@ -15,6 +15,7 @@
 @property (nonatomic, copy) NSArray *countiesArray;
 
 // designated initializer
-- (id)initWithState:(NSString *)aState;
+- (id)initWithStyle:(UITableViewStyle)aStyle
+              state:(NSString *)aState;
 
 @end

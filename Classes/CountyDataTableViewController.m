@@ -16,15 +16,19 @@
 
 
 #pragma mark initializers
-- (id)init {
+- (id)initWithStyle:(UITableViewStyle)aStyle {
     // call designated initializer
-    return [self initWithState:@"Alabama" county:@"Autauga County"];
+    return [self initWithStyle:aStyle state:@"Alabama" county:@"Autauga County"];
 }
 
 
 // designated initializer
-- (id)initWithState:(NSString *)aState county:(NSString *)aCounty {
-    self = [super init];
+- (id)initWithStyle:(UITableViewStyle)aStyle 
+              state:(NSString *)aState 
+             county:(NSString *)aCounty {
+    // call super's designated intializer.  
+    // Note UITableViewController may have 3 designated initializers.
+    self = [super initWithStyle:aStyle];
     if (self) {
         // Set title using aCountyName.
         self.title = aCounty;
@@ -91,13 +95,13 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [self.countyDictionary count];
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.countyDictionary count];
+    return 1;
 }
 
 
@@ -113,7 +117,7 @@
     
 	// Configure the cell.
 	// cell.textLabel.text = [self.countyDictionary objectAtIndex:indexPath.row];
-	cell.textLabel.text = @"blah";
+	cell.textLabel.text = [self.countyDictionary objectForKey:@"4/1/2000 resident total population estimates base"];
     
     return cell;
 }

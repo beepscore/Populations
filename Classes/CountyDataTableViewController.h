@@ -16,6 +16,8 @@
 @property (nonatomic, copy) NSDictionary *countyDictionary;
 
 // designated initializer
-- (id)initWithState:(NSString *)aState county:(NSString *)aCounty;
+- (id)initWithStyle:(UITableViewStyle)aStyle 
+              state:(NSString *)aState 
+             county:(NSString *)aCounty;
 
 @end
