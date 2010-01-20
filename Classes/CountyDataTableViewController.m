@@ -23,14 +23,14 @@
 
 
 // designated initializer
-- (id)initWithState:(NSString *)aStateName county:(NSString *)aCountyName {
+- (id)initWithState:(NSString *)aState county:(NSString *)aCounty {
     self = [super init];
     if (self) {
         // Set title using aCountyName.
-        self.title = aCountyName;
+        self.title = aCounty;
 
         States *tempStates = [[States alloc] init];
-        self.countyDictionary = [tempStates countyDictionaryWithState:aStateName county:aCountyName];
+        self.countyDictionary = [tempStates countyDictionaryWithState:aState county:aCounty];
         [tempStates release];
     }
     return self;    

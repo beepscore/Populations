@@ -15,6 +15,6 @@
 @property (nonatomic, copy) NSArray *countiesArray;
 
 // designated initializer
-- (id)initWithStateName:(NSString *)aStateName;
+- (id)initWithState:(NSString *)aState;
 
 @end

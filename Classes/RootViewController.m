@@ -133,7 +133,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Navigation logic may go here -- for example, create and push another view controller.
-    CountiesTableViewController *countiesTableViewController = [[CountiesTableViewController alloc] initWithStateName:[self.statesArray objectAtIndex:indexPath.row]];
+    CountiesTableViewController *countiesTableViewController = [[CountiesTableViewController alloc] initWithState:[self.statesArray objectAtIndex:indexPath.row]];
     
 	[self.navigationController pushViewController:countiesTableViewController animated:YES];
 	[countiesTableViewController release];

@@ -18,19 +18,19 @@
 
 #pragma mark initializers
 - (id)init {
-    return [self initWithStateName:@"Alabama"];
+    return [self initWithState:@"Alabama"];
 }
 
 
 // designated initializer
-- (id)initWithStateName:(NSString *)aStateName {
+- (id)initWithState:(NSString *)aState {
     self = [super init];
     if (self) {
         // Set title using aStateName.  Also this will be displayed in the next higher view's back button.
-        self.title = aStateName;
+        self.title = aState;
 
         States *tempStates = [[States alloc] init];
-        self.countiesArray = [tempStates countiesArrayWithState:aStateName];
+        self.countiesArray = [tempStates countiesArrayWithState:aState];
         [tempStates release];        
     }
     return self;    

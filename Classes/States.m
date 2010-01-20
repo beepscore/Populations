@@ -46,11 +46,11 @@
 }
 
 
-- (NSArray *)countiesArrayWithState:(NSString*)aStateKey {
+- (NSArray *)countiesArrayWithState:(NSString*)aState {
     
     NSMutableArray *countiesArray = [[NSMutableArray alloc] init];
     
-    NSDictionary *countiesDictionary = [[self statesDictionary] objectForKey:aStateKey];
+    NSDictionary *countiesDictionary = [[self statesDictionary] objectForKey:aState];
     
     for(NSString *aCounty in countiesDictionary) {
         [countiesArray addObject:aCounty];
@@ -66,14 +66,14 @@
 }
 
 
-- (NSDictionary *)countyDictionaryWithState:(NSString*)aStateKey county:(NSString*)aCountyKey {
+- (NSDictionary *)countyDictionaryWithState:(NSString*)aState county:(NSString*)aCounty {
     
     // Get object 2 levels deep, for state for county    
     NSDictionary *countiesDictionary = [[NSDictionary alloc] 
-                                        initWithDictionary:[[self statesDictionary] objectForKey:aStateKey]];
+                                        initWithDictionary:[[self statesDictionary] objectForKey:aState]];
     
     NSDictionary *countyDictionary = [[NSDictionary alloc] 
-                                      initWithDictionary:[countiesDictionary objectForKey:aCountyKey]];
+                                      initWithDictionary:[countiesDictionary objectForKey:aCounty]];
     [countiesDictionary release];
     
     // ????: can do plist objectForKey:@"Alabama"  ???????
