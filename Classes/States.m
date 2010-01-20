@@ -46,7 +46,7 @@
 }
 
 
-- (NSArray *)countiesArrayForState:(NSString*)aStateKey {
+- (NSArray *)countiesArrayWithState:(NSString*)aStateKey {
     
     NSMutableArray *countiesArray = [[NSMutableArray alloc] init];
     
@@ -66,7 +66,7 @@
 }
 
 
-- (NSDictionary *)countyDictionaryForState:(NSString*)aStateKey forCounty:(NSString*)aCountyKey {
+- (NSDictionary *)countyDictionaryWithState:(NSString*)aStateKey county:(NSString*)aCountyKey {
     
     // Get object 2 levels deep, for state for county    
     NSDictionary *countiesDictionary = [[NSDictionary alloc] 

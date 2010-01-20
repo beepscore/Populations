@@ -17,16 +17,20 @@
 
 #pragma mark initializers
 - (id)init {
-    return [self initWithCountyName:@"Alaska"];
+    // call designated initializer
+    return [self initWithState:@"Alabama" county:@"Autauga County"];
 }
 
 
 // designated initializer
-- (id)initWithCountyName:(NSString *)aCountyName {
+- (id)initWithState:(NSString *)aStateName county:(NSString *)aCountyName {
     self = [super init];
-    if (self) {        
+    if (self) {
+        // Set title using aCountyName.
+        self.title = aCountyName;
+
         States *tempStates = [[States alloc] init];
-        self.countyDictionary = [tempStates countyDictionaryForState:@"California" forCounty:@"Santa Clara County"];
+        self.countyDictionary = [tempStates countyDictionaryWithState:aStateName county:aCountyName];
         [tempStates release];
     }
     return self;    

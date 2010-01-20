@@ -18,17 +18,20 @@
 
 #pragma mark initializers
 - (id)init {
-    return [self initWithStateName:@"Alaska"];
+    return [self initWithStateName:@"Alabama"];
 }
 
 
 // designated initializer
 - (id)initWithStateName:(NSString *)aStateName {
     self = [super init];
-    if (self) {        
+    if (self) {
+        // Set title using aStateName.  Also this will be displayed in the next higher view's back button.
+        self.title = aStateName;
+
         States *tempStates = [[States alloc] init];
-        self.countiesArray = [tempStates countiesArrayForState:aStateName];
-        [tempStates release];
+        self.countiesArray = [tempStates countiesArrayWithState:aStateName];
+        [tempStates release];        
     }
     return self;    
 }
@@ -119,7 +122,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Navigation logic may go here -- for example, create and push another view controller.
-    CountyDataTableViewController *countyDataTableViewController = [[CountyDataTableViewController alloc] initWithCountyName:[self.countiesArray objectAtIndex:indexPath.row]];
+        
+    CountyDataTableViewController *countyDataTableViewController = 
+    [[CountyDataTableViewController alloc] initWithState:self.title
+                                                  county:[self.countiesArray objectAtIndex:indexPath.row]];
     
 	[self.navigationController pushViewController:countyDataTableViewController animated:YES];
 	[countyDataTableViewController release];
