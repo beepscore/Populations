@@ -25,7 +25,6 @@
 }
 
 
-
 - (NSArray *)statesArray {
     
     NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
@@ -38,9 +37,6 @@
     [resultsArray sortUsingSelector:@selector(compare:)];
     
     // TODO: Get only the top level values, not the whole dictionary            
-    // [statesArray count] = 18
-    NSLog(@"statesArray count = %d", [resultsArray count]);
-    NSLog(@"statesArray = %@", resultsArray);
     [resultsArray autorelease];
     return resultsArray;
 }
@@ -52,15 +48,13 @@
     
     NSDictionary *countiesDictionary = [[self statesDictionary] objectForKey:aState];
     
-    for(NSString *aCounty in countiesDictionary) {
+    for (NSString *aCounty in countiesDictionary) {
         [countiesArray addObject:aCounty];
     }        
     
     // Sort resultsArray alphabetically
     [countiesArray sortUsingSelector:@selector(compare:)];    
     
-    NSLog(@"countiesArray count = %d", [countiesArray count]);
-    NSLog(@"countiesArray = %@", countiesArray);
     [countiesArray autorelease];
     return countiesArray;
 }
@@ -76,14 +70,22 @@
                                       initWithDictionary:[countiesDictionary objectForKey:aCounty]];
     [countiesDictionary release];
     
-    // ????: can do plist objectForKey:@"Alabama"  ???????
-    // [tempDict valueForKey:aKey];
-    
-    NSLog(@"countyDictionary count = %d", [countyDictionary count]);
-    NSLog(@"countyDictionary = %@", countyDictionary);
     [countyDictionary autorelease];
     return countyDictionary;
 }
 
+
+- (NSArray *)countyArrayWithState:(NSString*)aState county:(NSString*)aCounty {
+    
+    NSMutableArray *countyArray = [[NSMutableArray alloc] init];
+    
+    NSDictionary *countyDictionary = [self countyDictionaryWithState:aState county:aCounty];
+
+    for (NSString *aKey in countyDictionary) {
+        [countyArray addObject:[NSDictionary dictionaryWithObject:[countyDictionary objectForKey:aKey] forKey:aKey]];
+    }
+    [countyArray autorelease];
+    return countyArray;
+}
 
 @end

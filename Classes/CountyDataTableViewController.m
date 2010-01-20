@@ -12,7 +12,7 @@
 
 @implementation CountyDataTableViewController
 
-@synthesize countyDictionary;
+@synthesize countyArray;
 
 
 #pragma mark initializers
@@ -34,7 +34,7 @@
         self.title = aCounty;
 
         States *tempStates = [[States alloc] init];
-        self.countyDictionary = [tempStates countyDictionaryWithState:aState county:aCounty];
+        self.countyArray = [tempStates countyArrayWithState:aState county:aCounty];
         [tempStates release];
     }
     return self;    
@@ -45,7 +45,7 @@
 #pragma mark destructors and memory cleanUp
 // use cleanUp method to avoid repeating code in dealloc, setView, and viewDidUnload
 -(void)cleanUp {
-    [countyDictionary release], countyDictionary = nil;
+    [countyArray release], countyArray = nil;
 }
 
 - (void)dealloc {
@@ -95,7 +95,13 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.countyDictionary count];
+    return [self.countyArray count];
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+
+    return [[[self.countyArray objectAtIndex:section] allKeys] objectAtIndex:0];    
 }
 
 
@@ -116,8 +122,7 @@
     }
     
 	// Configure the cell.
-	// cell.textLabel.text = [self.countyDictionary objectAtIndex:indexPath.row];
-	cell.textLabel.text = [self.countyDictionary objectForKey:@"4/1/2000 resident total population estimates base"];
+    cell.textLabel.text = [[[self.countyArray objectAtIndex:indexPath.section] allValues] objectAtIndex:0];
     
     return cell;
 }
