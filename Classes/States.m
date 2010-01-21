@@ -16,6 +16,7 @@
 }
 
 - (NSDictionary *)statesDictionary {
+
     // path is autoreleased  Don't retain it.
     NSString *path=[[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
     
@@ -26,29 +27,18 @@
 
 
 - (NSArray *)statesArray {
-    
-    NSMutableArray *resultsArray = [[NSMutableArray alloc] 
-                                    initWithArray:[[self statesDictionary] allKeys]];
 
     // Sort alphabetically
-    [resultsArray sortUsingSelector:@selector(compare:)];
-    
-    [resultsArray autorelease];
+    NSArray *resultsArray = [[[self statesDictionary] allKeys] sortedArrayUsingSelector:@selector(compare:)];
     return resultsArray;
 }
 
 
-- (NSArray *)countiesArrayWithState:(NSString*)aState {
-        
-    NSDictionary *countiesDictionary = [[self statesDictionary] objectForKey:aState];
-    
-    NSMutableArray *countiesArray = [[NSMutableArray alloc] 
-                                     initWithArray:[countiesDictionary allKeys]];
+- (NSArray *)countiesArrayWithState:(NSString*)aState {        
 
+    NSDictionary *countiesDictionary = [[self statesDictionary] objectForKey:aState];
     // Sort alphabetically
-    [countiesArray sortUsingSelector:@selector(compare:)];    
-    
-    [countiesArray autorelease];
+    NSArray *countiesArray = [[countiesDictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
     return countiesArray;
 }
 
@@ -61,12 +51,10 @@
     
     NSDictionary *countyDictionary = [[NSDictionary alloc] 
                                       initWithDictionary:[countiesDictionary objectForKey:aCounty]];
-    [countiesDictionary release];
-    
+    [countiesDictionary release];    
     [countyDictionary autorelease];
     return countyDictionary;
 }
-
 
 - (NSArray *)countyArrayWithState:(NSString*)aState county:(NSString*)aCounty {
     

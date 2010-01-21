@@ -12,9 +12,13 @@
 @interface States : NSObject {
 
 }
+// returns an alphabetically sorted array of state names
 - (NSArray *)statesArray;
+
+// returns an alphabetically sorted array of county names
 - (NSArray *)countiesArrayWithState:(NSString*)aState;
 
+// returns an array of dictionaries.  Each dictionary has one key-value pair.
 - (NSArray *)countyArrayWithState:(NSString*)aState county:(NSString*)aCounty;
 
 @end
