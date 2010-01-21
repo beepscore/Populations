@@ -27,32 +27,25 @@
 
 - (NSArray *)statesArray {
     
-    NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
-    
-    for(NSString *aState in [self statesDictionary]) {
-        [resultsArray addObject:aState];
-    }        
-    
+    NSMutableArray *resultsArray = [[NSMutableArray alloc] 
+                                    initWithArray:[[self statesDictionary] allKeys]];
+
     // Sort resultsArray alphabetically
     [resultsArray sortUsingSelector:@selector(compare:)];
     
-    // TODO: Get only the top level values, not the whole dictionary            
     [resultsArray autorelease];
     return resultsArray;
 }
 
 
 - (NSArray *)countiesArrayWithState:(NSString*)aState {
-    
-    NSMutableArray *countiesArray = [[NSMutableArray alloc] init];
-    
+        
     NSDictionary *countiesDictionary = [[self statesDictionary] objectForKey:aState];
     
-    for (NSString *aCounty in countiesDictionary) {
-        [countiesArray addObject:aCounty];
-    }        
-    
-    // Sort resultsArray alphabetically
+    NSMutableArray *countiesArray = [[NSMutableArray alloc] 
+                                     initWithArray:[countiesDictionary allKeys]];
+
+    // Sort countiesArray alphabetically
     [countiesArray sortUsingSelector:@selector(compare:)];    
     
     [countiesArray autorelease];
