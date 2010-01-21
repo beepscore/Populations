@@ -17,6 +17,7 @@
 
 
 #pragma mark initializers
+// override superclass' designated initializer. Ref Hillegass pg 57
 - (id)initWithStyle:(UITableViewStyle)aStyle {
     // call designated initializer
     return [self initWithStyle:aStyle state:@"Alabama"];

@@ -30,7 +30,7 @@
     NSMutableArray *resultsArray = [[NSMutableArray alloc] 
                                     initWithArray:[[self statesDictionary] allKeys]];
 
-    // Sort resultsArray alphabetically
+    // Sort alphabetically
     [resultsArray sortUsingSelector:@selector(compare:)];
     
     [resultsArray autorelease];
@@ -45,7 +45,7 @@
     NSMutableArray *countiesArray = [[NSMutableArray alloc] 
                                      initWithArray:[countiesDictionary allKeys]];
 
-    // Sort countiesArray alphabetically
+    // Sort alphabetically
     [countiesArray sortUsingSelector:@selector(compare:)];    
     
     [countiesArray autorelease];
