@@ -17,7 +17,7 @@
 
 - (NSDictionary *)statesDictionary {
 
-    // path is autoreleased  Don't retain it.
+    // We don't take ownership of path by retaining it, so we don't need to release it.
     NSString *path=[[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
     
     NSDictionary *resultsDictionary = [[NSDictionary alloc] initWithContentsOfFile:path];
