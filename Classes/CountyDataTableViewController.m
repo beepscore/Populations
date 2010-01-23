@@ -101,7 +101,8 @@
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-
+    // Here objectAtIndex:section returns a dictionary with one key-value pair.  Get the key.
+    // ????: Is there a cleaner way to do this?
     return [[[self.countyArray objectAtIndex:section] allKeys] objectAtIndex:0];    
 }
 
@@ -123,6 +124,8 @@
     }
     
 	// Configure the cell.
+    // Here objectAtIndex:indexPath.section returns a dictionary with one key-value pair.  Get the value.
+    // ????: Is there a cleaner way to do this?
     cell.textLabel.text = [[[self.countyArray objectAtIndex:indexPath.section] allValues] objectAtIndex:0];
     
     return cell;

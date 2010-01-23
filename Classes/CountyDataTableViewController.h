@@ -10,7 +10,6 @@
 
 
 @interface CountyDataTableViewController : UITableViewController {
-
     NSArray *countyArray;
 }
 @property (nonatomic, copy) NSArray *countyArray;
