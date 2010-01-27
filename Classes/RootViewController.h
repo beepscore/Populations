@@ -9,9 +9,9 @@
 @class States;
 
 @interface RootViewController : UITableViewController {
-    NSArray *statesArray;
+    NSArray *stateNames;
 }
 
-@property (nonatomic, copy) NSArray *statesArray;
+@property (nonatomic, copy) NSArray *stateNames;
 
 @end

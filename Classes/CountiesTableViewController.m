@@ -13,30 +13,30 @@
 
 @implementation CountiesTableViewController
 
-@synthesize countiesArray;
+@synthesize countyNames;
 
 
 #pragma mark initializers
 // override superclass' designated initializer. Ref Hillegass pg 57
 - (id)initWithStyle:(UITableViewStyle)aStyle {
     // call designated initializer
-    return [self initWithStyle:aStyle state:@"Alabama"];
+    return [self initWithStyle:aStyle stateName:@"Alabama"];
 }
 
 
 // designated initializer
 - (id)initWithStyle:(UITableViewStyle)aStyle
-              state:(NSString *)aState {
+              stateName:(NSString *)aStateName {
     // call super's designated intializer.  
     // Note UITableViewController may have 3 designated initializers.
     self = [super initWithStyle:aStyle];
     
     if (self) {
         // Set title using aStateName.  Also this will be displayed in the next higher view's back button.
-        self.title = aState;
+        self.title = aStateName;
         
         States *tempStates = [[States alloc] init];
-        self.countiesArray = [tempStates countiesArrayWithState:aState];
+        self.countyNames = [tempStates countyNamesWithStateName:aStateName];
         [tempStates release];        
     }
     return self;    
@@ -47,7 +47,7 @@
 #pragma mark destructors and memory cleanUp
 // use cleanUp method to avoid repeating code in dealloc, setView, and viewDidUnload
 -(void)cleanUp {
-    [countiesArray release], countiesArray = nil;
+    [countyNames release], countyNames = nil;
 }
 
 - (void)dealloc {
@@ -103,7 +103,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.countiesArray count];
+    return [self.countyNames count];
 }
 
 
@@ -118,7 +118,7 @@
     }
     
 	// Configure the cell.
-	cell.textLabel.text = [self.countiesArray objectAtIndex:indexPath.row];
+	cell.textLabel.text = [self.countyNames objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -131,8 +131,8 @@
     
     CountyDataTableViewController *countyDataTableViewController = 
     [[CountyDataTableViewController alloc] initWithStyle:UITableViewStyleGrouped
-                                                   state:self.title
-                                                  county:[self.countiesArray objectAtIndex:indexPath.row]];
+                                                   stateName:self.title
+                                                  countyName:[self.countyNames objectAtIndex:indexPath.row]];
     
 	[self.navigationController pushViewController:countyDataTableViewController animated:YES];
 	[countyDataTableViewController release];    

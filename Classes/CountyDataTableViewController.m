@@ -19,23 +19,23 @@
 // override superclass' designated initializer. Ref Hillegass pg 57
 - (id)initWithStyle:(UITableViewStyle)aStyle {
     // call designated initializer
-    return [self initWithStyle:aStyle state:@"Alabama" county:@"Autauga County"];
+    return [self initWithStyle:aStyle stateName:@"Alabama" countyName:@"Autauga County"];
 }
 
 
 // designated initializer
 - (id)initWithStyle:(UITableViewStyle)aStyle 
-              state:(NSString *)aState 
-             county:(NSString *)aCounty {
+              stateName:(NSString *)aStateName 
+             countyName:(NSString *)aCountyName {
     // call super's designated intializer.  
     // Note UITableViewController may have 3 designated initializers.
     self = [super initWithStyle:aStyle];
     if (self) {
         // Set title using aCountyName.
-        self.title = aCounty;
+        self.title = aCountyName;
 
         States *tempStates = [[States alloc] init];
-        self.countyArray = [tempStates countyArrayWithState:aState county:aCounty];
+        self.countyArray = [tempStates countyArrayWithStateName:aStateName countyName:aCountyName];
         [tempStates release];
     }
     return self;    

@@ -13,19 +13,20 @@
 
 }
 // returns an alphabetically sorted array of state names
-- (NSArray *)statesArray;
+- (NSArray *)stateNames;
 
 // returns an alphabetically sorted array of county names
-- (NSArray *)countiesArrayWithState:(NSString*)aState;
+- (NSArray *)countyNamesWithStateName:(NSString*)aStateName;
 
 
-// countyArrayWithState:county: returns an array of dictionaries.
+// returns an array of dictionaries.
 // Each dictionary has one key-value pair. 
 // The key describes the value, e.g. key="population increase", value = 200.
 
 // Could have returned two arrays instead, one for keys and one for values.
 // However that might increase the risk of mismatching keys and values.
 // For example, allKeys and allValues return arrays from a dictionary, but the order is undefined.
-- (NSArray *)countyArrayWithState:(NSString*)aState county:(NSString*)aCounty;
+// Kris Markel is pretty sure the order will be the same for allKeys and allValues
+- (NSArray *)countyArrayWithStateName:(NSString*)aStateName countyName:(NSString*)aCountyName;
 
 @end

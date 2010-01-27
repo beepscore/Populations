@@ -27,7 +27,7 @@
 }
 
 
-- (NSArray *)statesArray {
+- (NSArray *)stateNames {
 
     // Sort alphabetically
     NSArray *resultsArray = [[[self statesDictionary] allKeys] sortedArrayUsingSelector:@selector(compare:)];
@@ -35,33 +35,33 @@
 }
 
 
-- (NSArray *)countiesArrayWithState:(NSString*)aState {        
+- (NSArray *)countyNamesWithStateName:(NSString*)aStateName {        
 
-    NSDictionary *countiesDictionary = [[self statesDictionary] objectForKey:aState];
+    NSDictionary *countiesDictionary = [[self statesDictionary] objectForKey:aStateName];
     // Sort alphabetically
     NSArray *countiesArray = [[countiesDictionary allKeys] sortedArrayUsingSelector:@selector(compare:)];
     return countiesArray;
 }
 
 
-- (NSDictionary *)countyDictionaryWithState:(NSString*)aState county:(NSString*)aCounty {
+- (NSDictionary *)countyDictionaryWithStateName:(NSString*)aStateName countyName:(NSString*)aCountyName {
     
     // Get object 2 levels deep, for state for county    
     NSDictionary *countiesDictionary = [[NSDictionary alloc] 
-                                        initWithDictionary:[[self statesDictionary] objectForKey:aState]];
+                                        initWithDictionary:[[self statesDictionary] objectForKey:aStateName]];
     
     NSDictionary *countyDictionary = [[NSDictionary alloc] 
-                                      initWithDictionary:[countiesDictionary objectForKey:aCounty]];
+                                      initWithDictionary:[countiesDictionary objectForKey:aCountyName]];
     [countiesDictionary release];    
     [countyDictionary autorelease];
     return countyDictionary;
 }
 
-- (NSArray *)countyArrayWithState:(NSString*)aState county:(NSString*)aCounty {
+- (NSArray *)countyArrayWithStateName:(NSString*)aStateName countyName:(NSString*)aCountyName {
     
     NSMutableArray *countyArray = [[NSMutableArray alloc] init];
     
-    NSDictionary *countyDictionary = [self countyDictionaryWithState:aState county:aCounty];
+    NSDictionary *countyDictionary = [self countyDictionaryWithStateName:aStateName countyName:aCountyName];
 
     for (NSString *aKey in countyDictionary) {
         [countyArray addObject:[NSDictionary dictionaryWithObject:[countyDictionary objectForKey:aKey] forKey:aKey]];

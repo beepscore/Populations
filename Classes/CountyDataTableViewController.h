@@ -16,7 +16,7 @@
 
 // designated initializer
 - (id)initWithStyle:(UITableViewStyle)aStyle 
-              state:(NSString *)aState 
-             county:(NSString *)aCounty;
+              stateName:(NSString *)aStateName 
+             countyName:(NSString *)aCountyName;
 
 @end

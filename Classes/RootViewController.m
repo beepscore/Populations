@@ -12,13 +12,13 @@
 
 @implementation RootViewController
 
-@synthesize statesArray;
+@synthesize stateNames;
 
 #pragma mark -
 #pragma mark destructors and memory cleanUp
 // use cleanUp method to avoid repeating code in dealloc, setView, and viewDidUnload
 -(void)cleanUp {
-    [statesArray release], statesArray = nil;
+    [stateNames release], stateNames = nil;
 }
 
 - (void)dealloc {
@@ -60,7 +60,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     States *tempStates = [[States alloc] init];
-    self.statesArray = [tempStates statesArray];
+    self.stateNames = [tempStates stateNames];
     [tempStates release];
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -107,7 +107,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.statesArray count];
+    return [self.stateNames count];
 }
 
 
@@ -122,7 +122,7 @@
     }
     
 	// Configure the cell.
-	cell.textLabel.text = [self.statesArray objectAtIndex:indexPath.row];
+	cell.textLabel.text = [self.stateNames objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -135,7 +135,7 @@
     // Navigation logic may go here -- for example, create and push another view controller.
     CountiesTableViewController *countiesTableViewController = 
     [[CountiesTableViewController alloc] initWithStyle:UITableViewStylePlain
-                                                 state:[self.statesArray objectAtIndex:indexPath.row]];
+                                                 stateName:[self.stateNames objectAtIndex:indexPath.row]];
     
 	[self.navigationController pushViewController:countiesTableViewController animated:YES];
 	[countiesTableViewController release];
