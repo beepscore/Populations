@@ -121,8 +121,9 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-	// Configure the cell.
-	cell.textLabel.text = [self.stateNames objectAtIndex:indexPath.row];
+	// Configure the cell
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.text = [self.stateNames objectAtIndex:indexPath.row];
     
     return cell;
 }

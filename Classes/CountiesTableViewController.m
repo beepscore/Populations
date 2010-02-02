@@ -117,7 +117,8 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-	// Configure the cell.
+	// Configure the cell
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	cell.textLabel.text = [self.countyNames objectAtIndex:indexPath.row];
     
     return cell;
