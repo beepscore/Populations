@@ -11,8 +11,10 @@
 
 @interface CountyDataTableViewController : UITableViewController {
     NSArray *countyArray;
+    NSString *viewTitle;
 }
 @property (nonatomic, copy) NSArray *countyArray;
+@property (nonatomic, copy) NSString *viewTitle;
 
 // designated initializer
 - (id)initWithStyle:(UITableViewStyle)aStyle 

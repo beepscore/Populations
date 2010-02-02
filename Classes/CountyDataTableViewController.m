@@ -13,6 +13,7 @@
 @implementation CountyDataTableViewController
 
 @synthesize countyArray;
+@synthesize viewTitle;
 
 
 #pragma mark initializers
@@ -25,20 +26,32 @@
 
 // designated initializer
 - (id)initWithStyle:(UITableViewStyle)aStyle 
-              stateName:(NSString *)aStateName 
-             countyName:(NSString *)aCountyName {
+          stateName:(NSString *)aStateName 
+         countyName:(NSString *)aCountyName {
     // call super's designated intializer.  
     // Note UITableViewController may have 3 designated initializers.
     self = [super initWithStyle:aStyle];
     if (self) {
-        // Set title using aCountyName.
-        self.title = aCountyName;
-
+        
+        // Setup MVC Model
         States *tempStates = [[States alloc] init];
         self.countyArray = [tempStates countyArrayWithStateName:aStateName countyName:aCountyName];
         [tempStates release];
+        
+        // Don't setup view in an init method because it may not be completely loaded from nib.
+        // Setup view in viewDidLoad method
+        self.viewTitle = aCountyName;
     }
     return self;    
+}
+
+
+#pragma mark -
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // Setup MVC View
+    self.title = self.viewTitle;    
 }
 
 
@@ -47,6 +60,7 @@
 // use cleanUp method to avoid repeating code in dealloc, setView, and viewDidUnload
 -(void)cleanUp {
     [countyArray release], countyArray = nil;
+    [viewTitle release], viewTitle = nil;
 }
 
 - (void)dealloc {
@@ -81,15 +95,6 @@
     [super didReceiveMemoryWarning];
 	
 	// Release any cached data, images, etc that aren't in use.
-}
-
-
-#pragma mark -
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
