@@ -29,6 +29,7 @@
 	// Release any retained subviews of the main view.
     // Release any retained outlets
     // set properties to nil, which also releases them
+    self.stateNames = nil;
     [super viewDidUnload];  
 }
 
