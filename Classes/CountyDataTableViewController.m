@@ -56,40 +56,7 @@
 
 
 #pragma mark -
-#pragma mark destructors and memory cleanUp
-// use cleanUp method to avoid repeating code in dealloc, setView, and viewDidUnload
--(void)cleanUp {
-    [countyArray release], countyArray = nil;
-    [viewTitle release], viewTitle = nil;
-}
-
-- (void)dealloc {
-    [self cleanUp];
-    [super dealloc];
-}
-
-// Release IBOutlets in setView.  
-// Ref http://developer.apple.com/iPhone/library/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmNibObjects.html
-//
-// http://moodle.extn.washington.edu/mod/forum/discuss.php?d=3162
-- (void)setView:(UIView *)aView {
-    
-    if (!aView) { // view is being set to nil        
-        // set outlets to nil, e.g. 
-        // self.anOutlet = nil;
-        [self cleanUp];
-    }    
-    // Invoke super's implementation last    
-    [super setView:aView];    
-}
-
-
-- (void)viewDidUnload {
-	// Release anything that can be recreated in viewDidLoad or on demand.
-	// e.g. self.myOutlet = nil;
-    [self cleanUp];
-}
-
+#pragma mark Memory management
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -98,8 +65,25 @@
 }
 
 
-#pragma mark Table view methods
+// Ref http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmNibObjects.html
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+    // Release any retained outlets
+    // set properties to nil, which also releases them
+    self.countyArray = nil;
+    self.viewTitle = nil;
+    [super viewDidUnload];
+}
 
+
+- (void)dealloc {
+    [countyArray release], countyArray = nil;
+    [viewTitle release], viewTitle = nil;
+    [super dealloc];
+}
+
+
+#pragma mark Table view methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.countyArray count];
 }
