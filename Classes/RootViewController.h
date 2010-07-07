@@ -9,7 +9,7 @@
 @class States;
 
 @interface RootViewController : UITableViewController {
-    NSArray *stateNames;
+    // Xcode will automatically add instance variables to back properties
 }
 
 @property (nonatomic, copy) NSArray *stateNames;

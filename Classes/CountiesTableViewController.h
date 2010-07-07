@@ -10,7 +10,7 @@
 
 
 @interface CountiesTableViewController : UITableViewController {
-    NSArray *countyNames;
+    // Xcode will automatically add instance variables to back properties
 }
 @property (nonatomic, copy) NSArray *countyNames;
 

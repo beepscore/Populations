@@ -8,8 +8,7 @@
 
 @interface PopulationsAppDelegate : NSObject <UIApplicationDelegate> {
     
-    UIWindow *window;
-    UINavigationController *navigationController;
+    // Xcode will automatically add instance variables to back properties
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

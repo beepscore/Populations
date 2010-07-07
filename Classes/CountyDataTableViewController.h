@@ -10,8 +10,7 @@
 
 
 @interface CountyDataTableViewController : UITableViewController {
-    NSArray *countyArray;
-    NSString *viewTitle;
+    // Xcode will automatically add instance variables to back properties
 }
 @property (nonatomic, copy) NSArray *countyArray;
 @property (nonatomic, copy) NSString *viewTitle;
